@@ -226,7 +226,7 @@ module Avro
       # UTF-8 encoded character data
       def write_string(datum)
         datum = datum.encode('utf-8'.freeze) if datum.respond_to? :encode
-        write_bytes(datum)
+        write_bytes(datum.force_encoding('BINARY'))
       end
 
       # Write an arbritary datum.
